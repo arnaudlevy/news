@@ -19,7 +19,7 @@
 class Entry < ApplicationRecord
   belongs_to :feed
 
-  default_scope -> { order(published: :desc) }
+  scope :today -> { order(published: :desc) }
 
   after_save :load_full_content
 

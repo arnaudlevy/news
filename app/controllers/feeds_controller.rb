@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.where(published: Date.today)
+    @feeds = Feed.all
     @feed = Feed.new
   end
 
