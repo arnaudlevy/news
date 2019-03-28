@@ -1,4 +1,4 @@
-<div class="entry">
+<div id="entry<%= entry.id %>" class="entry">
   <% unless entry.image.blank? %>
     <div class="entry__image"><%= image_tag entry.image %></div>
   <% end %>
@@ -9,8 +9,17 @@
       <%= entry.description %>
     </p>
     <% unless entry.feed.image.blank? %>
-      <div class="entry__texts__source"><%= link_to image_tag(entry.feed.image), entry.url, target: :_blank %></div>
+      <div class="entry__texts__source">
+        <%= link_to image_tag(entry.feed.image), entry.url, target: :_blank %>
+      </div>
     <% end %>
-    <%= link_to '+', entry %>
+    <% unless entry.full_text.blank? %>
+      <div class="entry__texts__full">
+        <a href="javascript: document.getElementById('entry<%= entry.id %>').classList.add('open')">
+          Lire
+        </a>
+        <p><%= entry.full_text %></p>
+      </div>
+    <% end %>
   </div>
 </div>

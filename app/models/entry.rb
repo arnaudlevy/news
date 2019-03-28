@@ -2,23 +2,26 @@
 #
 # Table name: entries
 #
-#  id         :bigint(8)        not null, primary key
-#  title      :string
-#  url        :text
-#  content    :text
-#  descrition :text
-#  image      :text
-#  published  :datetime
-#  guid       :string
-#  feed_id    :bigint(8)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint(8)        not null, primary key
+#  title       :string
+#  url         :text
+#  content     :text
+#  description :text
+#  image       :text
+#  published   :datetime
+#  guid        :string
+#  feed_id     :bigint(8)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  full_text   :text
 #
 
 class Entry < ApplicationRecord
   belongs_to :feed
 
   default_scope -> { order(published: :desc) }
+
+  after_save :load_full_content
 
   def self.create_from_feed(entry, feed)
     where(guid: entry.id).first_or_initialize do |e|
@@ -35,5 +38,17 @@ class Entry < ApplicationRecord
 
   def to_s
     "#{title}"
+  end
+
+  protected
+
+  def load_full_content
+    wait 5
+    api = "https://boilerpipe-web.appspot.com/extract?url=#{url}&extractor=ArticleExtractor&output=text&extractImages=&token="
+    data = HTTParty.get api
+    text = data.to_s
+    text.gsub!('Envoyer par e-mail', '')
+    update_column :full_text, text
+  rescue
   end
 end

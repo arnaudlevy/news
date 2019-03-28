@@ -23,6 +23,8 @@
   <%= @entry.guid %>
 </p>
 
+<p><%= @entry.full_text %></p>
+
 <%= link_to @entry.feed, @entry.feed %>
 
 <%= link_to 'Edit', edit_entry_path(@entry) %>

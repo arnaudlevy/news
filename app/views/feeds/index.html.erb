@@ -1,23 +1,17 @@
-<h1>Feeds</h1>
+<div class="container">
+  <h1>Feeds</h1>
 
-<h2>Add feed</h2>
-<%= render 'form', feed: @feed %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
+  <h2>Add feed</h2>
+  <%= render 'form', feed: @feed %>
+  <ul>
     <% @feeds.each do |feed| %>
-      <tr>
-        <td><%= link_to feed.title, feed %></td>
-        <td><%= image_tag feed.image unless feed.image.blank? %></td>
-        <td><%= feed.description %></td>
-      </tr>
+      <%= link_to feed do %>
+        <li>
+          <%= image_tag feed.image unless feed.image.blank? %>
+          <h3><%= feed %></h3>
+          <p><%= feed.description %></p>
+        </li>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
