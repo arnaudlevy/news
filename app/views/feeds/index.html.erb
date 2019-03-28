@@ -5,12 +5,12 @@
   <%= render 'form', feed: @feed %>
   <ul>
     <% @feeds.each do |feed| %>
+      <hr/>
       <%= link_to feed do %>
         <li>
           <%= image_tag feed.image unless feed.image.blank? %>
           <h3><%= feed %></h3>
           <p><%= feed.description %></p>
-          <hr/>
         </li>
       <% end %>
     <% end %>
