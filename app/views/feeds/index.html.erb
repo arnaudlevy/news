@@ -1,5 +1,8 @@
 <h1>Feeds</h1>
 
+<h2>Add feed</h2>
+<%= render 'form', feed: @feed %>
+
 <table>
   <thead>
     <tr>
@@ -12,13 +15,9 @@
     <% @feeds.each do |feed| %>
       <tr>
         <td><%= link_to feed.title, feed %></td>
-        <td><%= image_tag feed.image %></td>
+        <td><%= image_tag feed.image unless feed.image.blank? %></td>
         <td><%= feed.description %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Feed', new_feed_path %>

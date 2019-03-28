@@ -10,10 +10,7 @@
   <%= @feed.last_import %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @feed.image %>
-</p>
+<%= image_tag @feed.image unless @feed.image.blank? %>
 
 <p>
   <strong>Description:</strong>

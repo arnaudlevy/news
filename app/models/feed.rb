@@ -27,8 +27,8 @@ class Feed < ApplicationRecord
     xml = HTTParty.get(url).body
     feed = Feedjira::Feed.parse(xml)
     self.update_columns title: feed.title,
-                        image: feed.image.url,
                         description: feed.description
+    self.update_column image, feed.image.url unless feed.image.nil?
     feed.entries.each do |entry|
       Entry.create_from_feed entry, self
     end

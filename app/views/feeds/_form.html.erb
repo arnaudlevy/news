@@ -1,9 +1,4 @@
 <%= form_with(model: feed, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :url %>
-    <%= form.text_area :url %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.text_area :url, placeholder: 'URL' %>
+  <%= form.submit %>
 <% end %>
