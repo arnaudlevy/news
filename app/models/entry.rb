@@ -19,7 +19,8 @@ class Entry < ApplicationRecord
   belongs_to :feed
 
   def self.create_from_feed(entry, feed)
-    where(feed: feed, guid: entry.id).first_or_initialize do |e|
+    where(guid: entry.id).first_or_initialize do |e|
+      e.feed = feed
       e.title = entry.title
       e.content = entry.content
       e.description = entry.summary
