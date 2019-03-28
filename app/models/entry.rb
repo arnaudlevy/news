@@ -22,7 +22,7 @@ class Entry < ApplicationRecord
     where(feed: feed, guid: entry.id).first_or_initialize do |e|
       e.title = entry.title
       e.content = entry.content
-      e.description = entry.description
+      e.description = entry.summary
       e.url = entry.url
       e.image = entry.image
       e.published = entry.published
