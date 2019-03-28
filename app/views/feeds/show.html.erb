@@ -1,21 +1,9 @@
 <h1><%= @feed.title %></h1>
 
-<p>
-  <strong>Url:</strong>
-  <%= @feed.url %>
-</p>
-
-<p>
-  <strong>Last import:</strong>
-  <%= @feed.last_import %>
-</p>
-
 <%= image_tag @feed.image unless @feed.image.blank? %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @feed.description %>
-</p>
+<%= link_to 'Edit', edit_feed_path(@feed) %>
 
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+<% @feed.entries.each do |entry| %>
+  <%= render entry %>
+<% end %>

@@ -18,6 +18,8 @@
 class Entry < ApplicationRecord
   belongs_to :feed
 
+  default_scope -> { order(published: :desc) }
+
   def self.create_from_feed(entry, feed)
     where(guid: entry.id).first_or_initialize do |e|
       e.feed = feed

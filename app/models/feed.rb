@@ -15,6 +15,8 @@
 class Feed < ApplicationRecord
   after_save :sync
 
+  has_many :entries, dependent: :destroy
+
   def self.sync_all
     find_each do |feed|
       feed.sync
