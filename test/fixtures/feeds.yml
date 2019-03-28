@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: feeds
+#
+#  id          :bigint(8)        not null, primary key
+#  title       :string
+#  url         :text
+#  last_import :datetime
+#  image       :text
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
