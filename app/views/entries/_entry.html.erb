@@ -5,7 +5,7 @@
   <div class="entry__texts">
     <h1 class="entry__texts__title"><%= entry.title %></h1>
     <p class="entry__texts__description">
-      <%= entry.description %>
+      <%= strip_tags (entry.description || entry.content) %>
     </p>
     <% unless entry.feed.image.blank? %>
       <div class="entry__texts__source">
