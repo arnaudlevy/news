@@ -1,9 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @entry.title %>
-</p>
+<h1><%= @entry.title %></h1>
 
 <p>
   <strong>Url:</strong>
@@ -11,19 +6,12 @@
 </p>
 
 <p>
-  <strong>Content:</strong>
   <%= @entry.content %>
+  <%= @entry.description %>
 </p>
 
-<p>
-  <strong>Descrition:</strong>
-  <%= @entry.descrition %>
-</p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @entry.image %>
-</p>
+<%= image_tag @entry.image unless @entry.image.nil? %>
 
 <p>
   <strong>Published:</strong>
@@ -35,10 +23,6 @@
   <%= @entry.guid %>
 </p>
 
-<p>
-  <strong>Feed:</strong>
-  <%= @entry.feed %>
-</p>
+<%= link_to @entry.feed, @entry.feed %>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+<%= link_to 'Edit', edit_entry_path(@entry) %>

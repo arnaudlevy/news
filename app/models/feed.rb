@@ -31,4 +31,8 @@ class Feed < ApplicationRecord
       Entry.create_from_feed entry, self
     end
   end
+
+  def to_s
+    "#{title}"
+  end
 end

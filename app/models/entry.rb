@@ -32,4 +32,8 @@ class Entry < ApplicationRecord
       e.save
     end
   end
+
+  def to_s
+    "#{title}"
+  end
 end
