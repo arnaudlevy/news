@@ -18,19 +18,15 @@ class Feed < ApplicationRecord
   has_many :entries, dependent: :destroy
 
   def self.sync_all
-    find_each do |feed|
-      feed.sync
-    end
+    find_each &:sync
   end
-
-  protected
 
   def sync
     xml = HTTParty.get(url).body
     feed = Feedjira::Feed.parse(xml)
     self.update_columns title: feed.title,
                         description: feed.description
-    self.update_column image, feed.image.url unless feed.image.nil?
+    self.update_column :image, feed.image.url unless feed.image.nil?
     feed.entries.each do |entry|
       Entry.create_from_feed entry, self
     end
