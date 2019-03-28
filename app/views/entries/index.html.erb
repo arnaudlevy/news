@@ -1,6 +1,8 @@
 <% @entries.each do |entry| %>
   <div class="entry">
-    <div class="entry__image"><%= image_tag entry.image %></div>
+    <% unless entry.image.blank? %>
+      <div class="entry__image"><%= image_tag entry.image %></div>
+    <% end %>
     <div class="entry__texts">
       <h1 class="entry__texts__title"><%= entry.title %></h1>
       <p class="entry__texts__description">
