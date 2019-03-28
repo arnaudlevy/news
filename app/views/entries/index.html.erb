@@ -1,9 +1,13 @@
 <% @entries.each do |entry| %>
   <div class="entry">
     <div class="entry__image"><%= image_tag entry.image %></div>
-    <h1><%= entry.title %></h1>
-    <p><%= entry.content %></p>
-    <p><%= entry.description %></p>
-    <td><%= link_to image_tag(entry.feed.image), entry.url, target: :_blank %></td>
+    <div class="entry__texts">
+      <h1 class="entry__texts__title"><%= entry.title %></h1>
+      <p class="entry__texts__description">
+        <%= entry.content %>
+        <%= entry.description %>
+      </p>
+      <div class="entry__texts__source"><%= link_to image_tag(entry.feed.image), entry.url, target: :_blank %></div>
+    </div>
   </div>
 <% end %>
