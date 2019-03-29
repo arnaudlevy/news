@@ -19,12 +19,16 @@
 class Entry < ApplicationRecord
   belongs_to :feed
 
-  scope :today, -> { order(published: :desc) }
+  scope :since, -> (days) {
+    where('DATE(published) >= ? AND DATE(published) < ?', Date.tomorrow - days, Date.tomorrow)
+    .order(published: :desc)
+  }
 
   after_save :load_full_content
 
   def self.create_from_feed(entry, feed)
     where(guid: entry.id).first_or_initialize do |e|
+      puts "Creating #{entry.title} in #{feed}"
       e.feed = feed
       e.title = entry.title
       e.content = entry.content

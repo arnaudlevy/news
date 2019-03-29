@@ -18,10 +18,12 @@ class Feed < ApplicationRecord
   has_many :entries, dependent: :destroy
 
   def self.sync_all
-    find_each &:sync
+    puts "Synchronizing feeds"
+    find_each { |feed| feed.sync }
   end
 
   def sync
+    puts "Feed #{to_s}"
     xml = HTTParty.get(url).body
     feed = Feedjira::Feed.parse(xml)
     self.update_columns title: feed.title,
