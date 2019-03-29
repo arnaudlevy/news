@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.since(1.day).includes(:feed)
+    @entries = Entry.since(2.days).includes(:feed)
   end
 
   # GET /entries/1
