@@ -47,7 +47,7 @@ class Entry < ApplicationRecord
   protected
 
   def load_full_content
-    sleep 30
+    sleep 20
     api = "https://boilerpipe-web.appspot.com/extract?url=#{url}&extractor=ArticleExtractor&output=text&extractImages=&token="
     data = HTTParty.get api
     text = data.to_s
