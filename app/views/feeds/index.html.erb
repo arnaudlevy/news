@@ -9,7 +9,8 @@
       <%= link_to feed do %>
         <li>
           <%= image_tag feed.image unless feed.image.blank? %>
-          <h3><%= feed %></h3>
+          <h2><%= feed %></h2>
+          <p class="small"><%= feed.url %></p>
           <p><%= feed.description %></p>
         </li>
       <% end %>

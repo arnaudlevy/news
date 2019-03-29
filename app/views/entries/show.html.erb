@@ -3,11 +3,12 @@
 
   <h1><%= @entry.title %></h1>
 
-  <div><%= link_to @entry.feed, @entry.feed %></div>
 
-  <p>Published: <%= @entry.published %></p>
-  <p>URL: <%= @entry.url %></p>
-  <p>Guid: <%= @entry.guid %></p>
+  <p class="small">
+    Published: <%= @entry.published %><br/>
+    URL: <%= @entry.url %><br/>
+    Guid: <%= @entry.guid %>
+  </p>
 
   <p>
     <%= @entry.content %>
@@ -15,6 +16,8 @@
   </p>
 
   <p><%= @entry.full_text %></p>
+
+  <div><%= link_to @entry.feed, @entry.feed %></div>
 
   <%= link_to 'Edit', edit_entry_path(@entry) %>
 </div>
