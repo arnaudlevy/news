@@ -50,9 +50,9 @@ class Entry < ApplicationRecord
     sleep 5
     api = "https://boilerpipe-web.appspot.com/extract?url=#{url}&extractor=ArticleExtractor&output=text&extractImages=&token="
     data = HTTParty.get api
-    byebug
     text = data.to_s
-    text.gsub!('Envoyer par e-mail', '')
+    text = ActionController::Base.helpers.strip_tags text
+    text = text.gsub('Envoyer par e-mail', '')
     update_column :full_text, text
   rescue
   end
