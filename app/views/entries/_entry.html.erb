@@ -4,6 +4,7 @@
   <% end %>
   <div class="entry__texts">
     <h1 class="entry__texts__title"><%= entry.title %></h1>
+    <p class="entry__texts__date"><%= entry.published.strftime "%Hh%M le %d/%m" %></p>
     <%= link_to '&nbsp;'.html_safe, entry %>
     <p class="entry__texts__description">
       <%= strip_tags (entry.description || entry.content) %>
