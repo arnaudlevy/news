@@ -40,6 +40,10 @@ class Entry < ApplicationRecord
     end
   end
 
+  def text
+    description || content
+  end
+
   def to_s
     "#{title}"
   end
