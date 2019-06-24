@@ -3,11 +3,11 @@
     <div class="entry__image"><%= image_tag entry.image %></div>
   <% end %>
   <div class="entry__texts">
-    <h1 class="entry__texts__title"><%= clean_quotes entry.title %></h1>
+    <h1 class="entry__texts__title"><%= clean entry.title %></h1>
     <p class="entry__texts__date"><%= entry.published.strftime "%Hh%M le %d/%m" %></p>
     <%= link_to '&nbsp;'.html_safe, entry %>
     <p class="entry__texts__description">
-      <%= clean_ampersands strip_tags entry.text %>
+      <%= clean strip_tags entry.text %>
     </p>
     <% unless entry.feed.image.blank? %>
       <div class="entry__texts__source">
