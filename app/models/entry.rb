@@ -24,6 +24,8 @@ class Entry < ApplicationRecord
     .order(published: :desc)
   }
 
+  scope :old, -> { where('DATE(published) < ?', Date.today - 10.days) }
+
   after_save :load_full_content
 
   def self.create_from_feed(entry, feed)
