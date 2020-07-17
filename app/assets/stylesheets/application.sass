@@ -6,14 +6,15 @@ body
 
 h1, p, a
     font-family: 'EB Garamond', serif
+    text-align: center
 
 h1
-    font-size: 50px
+    font-size: 46px
     font-style: italic
     font-weight: normal
-    line-height: 50px
-    margin: 10px -10px
-    padding: 10px
+    line-height: 48px
+    margin: 20px -20px
+    padding: 20px
     letter-spacing: -1px
 
 h2
@@ -21,8 +22,8 @@ h2
     font-weight: normal
 
 p
-    font-size: 22px
-    line-height: 26px
+    font-size: 18px
+    line-height: 22px
     margin-bottom: 20px
 
 a
@@ -30,7 +31,7 @@ a
     text-decoration: none
 
 img
-    max-width: 100%
+    width: 100%
 
 .small
     font-size: 14px
@@ -48,21 +49,17 @@ img
         &__title
             overflow-x: scroll
             overflow-y: hidden
-        &__description
-            font-size: 24px
-            line-height: 30px
         &__date
             font-family: 'Montserrat', sans-serif
-            font-size: 11px
+            font-size: 10px
             font-weight: 700
             text-transform: uppercase
             letter-spacing: 1px
         &__source
-            float: right
-            display: inline-block
-            text-align: right
+            margin-top: 40px
+            text-align: center
             img
-                width: 50%
+                max-width: 80px
         &__full
             a
                 display: block
@@ -81,28 +78,16 @@ img
                 display: block
 
 @media screen and (min-width: 1024px)
+    h1
+        font-size: 60px
+        line-height: 66px
     .entry
-        margin: 0 auto 300px auto
+        margin: 300px auto 0
         max-width: 800px
         &__texts
             &__title
                 overflow: visible
-                font-size: 100px
-                line-height: 75px
-                margin-left: -200px
             &__date
-                margin-top: 40px
-                margin-bottom: 0
-            &__source
-                float: none
-                text-align: inherit
+                // margin-top: 40px
+                // margin-bottom: 0
         &__image
-    // .entry
-    //     clear: both
-    //     padding-right: 50px
-    //     margin-bottom: 40px
-    //     &__image
-    //         float: left
-    //         max-width: 50vw
-    //     &__texts
-    //         margin-left: 50vw
