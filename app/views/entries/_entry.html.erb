@@ -11,7 +11,11 @@
     </p>
     <% unless entry.feed.image.blank? %>
       <div class="entry__texts__source">
-        <%= link_to image_tag(entry.feed.image), entry.url, target: :_blank %>
+        <a href="<%= entry.url %>">
+          <img  src="<%= entry.feed.image %>"
+                alt=""
+                onerror: "this.parentNode.removeChild(this)">
+        </a>
       </div>
     <% end %>
     <% unless entry.full_text.blank? %>
