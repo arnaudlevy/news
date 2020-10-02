@@ -1,11 +1,16 @@
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :set_feed, only: [:show, :sync, :edit, :update, :destroy]
 
   # GET /feeds
   # GET /feeds.json
   def index
     @feeds = Feed.all
     @feed = Feed.new
+  end
+
+  def sync
+    @feed.sync
+    redirect_to @feed
   end
 
   # GET /feeds/1

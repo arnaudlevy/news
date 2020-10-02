@@ -3,22 +3,15 @@
 
   <h2>Add feed</h2>
   <%= render 'form', feed: @feed %>
-  <table>
-    <thead>
-      <tr>
-        <th>Feed</th>
-        <th>Image</th>
-        <th>Description</th
-      </tr>
-    </thead>
-    <tbody>
-      <% @feeds.each do |feed| %>
-        <tr>
-          <td><%= link_to feed, feed %></td>
-          <td><%= image_tag feed.image unless feed.image.blank? %></td>
-          <td><%= feed.description %></td>
-        </tr>
+
+  <div class="feeds">
+    <% @feeds.each do |feed| %>
+      <%= link_to feed do %>
+      <div class="feeds__feed">
+        <%= image_tag feed.image, class: 'img-fluid' unless feed.image.blank? %>
+        <p><%= feed %></p>
+      </div>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </div>
 </div>
