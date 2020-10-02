@@ -37,7 +37,7 @@ class Feed < ApplicationRecord
   def feed
     unless @feed
       xml = HTTParty.get(url).body
-      @feed = Feedjira::Feed.parse(xml)
+      @feed = Feedjira.parse(xml)
     end
     @feed
   end
